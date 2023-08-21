@@ -1,0 +1,20 @@
+resources:
+- name: git-clone
+  type: git
+  source:
+    uri: https://github.com/vito/booklit
+
+jobs:
+- name: unit
+  plan:
+  - get: booklit
+    trigger: true
+  - task: test
+    config:
+      run:
+      path: sh
+      args:
+        - -exc
+        - |
+          ls -la
+
